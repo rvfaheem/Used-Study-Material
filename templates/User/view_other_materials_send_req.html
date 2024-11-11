@@ -1,0 +1,48 @@
+{% extends 'User/Home_index.html' %}
+{% block body %}
+
+
+<form action="/MATERIAL/search_user_p_manage_request/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ id }}">
+<table class="px pull-left">
+  <tr>
+    <th>From Date</th>
+    <td>
+      <input type="date" class="form-control" required name="textfield" id="textfield" /></td>
+    <th>To Date</th>
+    <td>
+      <input type="date" class="form-control" name="textfield2" required id="textfield2" /></td>
+    <td><input type="submit" name="button" class="btn btn-success" id="button" value="Search" /></td>
+  </tr>
+</table>
+
+</form>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>S/no</th>
+    <th>Date</th>
+    <th>User</th>
+    <th>Material</th>
+    <th>Image</th>
+    <th>Price</th>
+      <th>Condition</th>
+{#    <td>Request</td>#}
+    <td>&nbsp;</td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.date }}</td>
+    <td>&nbsp;{{ i.USER.name }}</td>
+    <td>&nbsp;{{ i.material_name }} - {{ i.CATEGORY.category_name }}</td>
+    <td>&nbsp;<img src="{{ i.image }}" height="80px" width="80px" /></td>
+    <td>&nbsp;{{ i.price }}</td>
+    <td>&nbsp;{{ i.condition }}</td>
+
+    <td><a href="/MATERIAL/send_request/{{ i.id }}" class="btn btn-outline-success" >Send</a></td>
+  </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

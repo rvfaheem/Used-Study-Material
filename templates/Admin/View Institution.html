@@ -1,0 +1,34 @@
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+<form action="/MATERIAL/serch_type/" method="post" class="table table-bordered table-stripped">
+    {% csrf_token %}
+<table  border="1" class="table table-bordered table-stripped pull-left ">
+  <tr>
+    <td>
+      <input type="text" class="form-control" required name="textfield" id="textfield" /></td>
+    <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>
+  </tr>
+</table>
+
+
+</form>
+<table class="table table-bordered table-stripped">
+  <tr>
+    <td>S/No</td>
+    <td>Institution Type</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.Type }}</td>
+    <td><a href="/MATERIAL/type_edit/{{ i.id }}" class="btn btn-success">Edit</a></td>
+    <td><a href="/MATERIAL/type_delete/{{ i.id }}" class="btn btn-danger" onclick="return confirm('Are You Sure')">Delete</a></td>
+    <td><a href="/MATERIAL/view_category/{{ i.id }}"  class="btn btn-primary">Categories</a></td>
+  </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

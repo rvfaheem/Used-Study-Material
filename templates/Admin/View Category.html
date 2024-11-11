@@ -1,0 +1,30 @@
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+<form action="/MATERIAL/search_view_category/" method="post">
+    <table class="table table-bordered table-hovered table-stripped">
+    {% csrf_token %}
+  <tr>
+    <td><input type="text"  class='form-control' name="textfield" id="textfield" /></td>
+    <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>
+  </tr>
+</table>
+
+</form>
+<table class="table table-bordered table-hovered table-stripped">
+  <tr>
+    <th width="36" height="48">s/no</th>
+    <th width="20">Category</th>
+    <th width="36">&nbsp;</th>
+    <th width="44">&nbsp;</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.category_name }}</td>
+    <td><a href="/MATERIAL/edit_category/{{ i.id }}" class="btn btn-success">edit</a></td>
+    <td><a href="/MATERIAL/delete_category/{{ i.id }}" class="btn btn-danger">delete</a></td>
+  </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

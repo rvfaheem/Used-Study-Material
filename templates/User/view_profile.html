@@ -1,0 +1,42 @@
+{% extends 'User/Home_index.html' %}
+{% block body %}
+
+<form action="" method="get" enctype="multipart/form-data">
+<table class="table table-bordered table-striped">
+    <tr>
+    <td></td>
+    <td><img src="{{ data.photo }}" height="90px" width="90px" ></td>
+  </tr>
+  <tr>
+    <th>User name</th>
+    <td>{{ data.name }}</td>
+  </tr>
+
+  <tr>
+    <th>Phone</th>
+    <td>{{ data.phone }}</td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td>{{ data.email }}</td>
+  </tr>
+  <tr>
+    <th>Place</th>
+    <td>{{ data.place }}</td>
+  </tr>
+  <tr>
+    <th>District</th>
+    <td>{{ data.District }}</td>
+  </tr>
+  <tr>
+    <th>Pin</th>
+    <td>{{ data.pin }}</td>
+  </tr>
+
+  <tr>
+
+    <td colspan="2" align="center"><a href="/MATERIAL/user_edit_profile/#abc" class="btn btn-outline-info">Edit</a> </td>
+  </tr>
+</table>
+</form>
+{% endblock %}

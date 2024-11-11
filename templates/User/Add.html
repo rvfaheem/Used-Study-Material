@@ -1,0 +1,50 @@
+{% extends 'User/Home_index.html' %}
+{% block body %}
+
+<form action="/MATERIAL/user_add_materials_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Material Name</th>
+    <td>
+      <input type="text" name="textfield" class="form-control" required id="textfield" /></td>
+  </tr>
+  <tr>
+    <th>Image</th>
+
+      <td><input type="file" name="fileField" class="form-control" required id="fileField" /></td>
+  </tr>
+  <tr>
+    <th>Price</th>
+
+      <td><input type="text" name="textfield2" class="form-control" required id="textfield2" /></td>
+  </tr>
+
+  <tr>
+    <th>Condition</th>
+
+      <td><input type="text" name="textfield4" class="form-control" required id="textfield4" /></td>
+  </tr>
+    <tr>
+        <th>Available status</th>
+        <td><select name="select" class="form-control">
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
+        </select></td>
+    </tr>
+        <tr>
+        <th>Category</th>
+        <td><select name="select2" class="form-control">
+            {% for i in data %}
+            <option value="{{ i.id }}">{{ i.category_name }}- {{ i.INSTITUTIONTYPE.Type }}</option>
+            {% endfor %}
+        </select></td>
+    </tr>
+  <tr>
+    <td colspan="2" align="center"><input type="submit" name="button" class="btn btn-success" id="button" value="Add" /></td>
+    
+  </tr>
+</table>
+</form>
+
+{% endblock %}
